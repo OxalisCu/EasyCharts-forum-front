@@ -36,4 +36,6 @@ The Vue Store that you will enjoy using [Pinia](https://pinia.vuejs.org/introduc
 
 Next Generation Frontend Tooling [Vite](https://www.vitejs.net/)
 
-UI Framework [Ant Design Vue](https://antdv.com/docs/vue/introduce-cn/)
+UI Framework [Element UI](https://element-plus.gitee.io/)
+
+Icon (Iconify)[https://icon-sets.iconify.design/]

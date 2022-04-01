@@ -1,16 +1,20 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import Antd from 'ant-design-vue'
-import 'ant-design-vue/dist/antd.css'
 import {router} from './router'
-import {IconFont} from './iconfont'
+import ElementPlus from 'element-plus'
+import {Icon} from '@iconify/vue'
+import './styles/index.css'
+import directives from './directives/index.js'
+import store from './store/index.js'
 
-const Vue = createApp(App)
+const app = createApp(App)
 
-Vue.config.productionTip = false;
+app.config.productionTip = false;
 
-Vue
-  .use(Antd)
+app
+  .component("Icon", Icon)
+  .use(ElementPlus)
   .use(router)
-  .component('icon-font', IconFont)
+  // .use(directives)
+  .use(store)
   .mount('#app')

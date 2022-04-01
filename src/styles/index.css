@@ -1,0 +1,10 @@
+.card-border {
+    border: 1px solid #ddd;
+    /*box-shadow: 0 0 10px #ddd;*/
+    border-radius: 10px;
+}
+
+/*.card-hover:hover {*/
+/*    box-shadow: 0 0 10px #ddd;*/
+/*    transition: box-shadow 0.3s;*/
+/*}*/

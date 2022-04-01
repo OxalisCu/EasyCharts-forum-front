@@ -13,7 +13,6 @@
   height: 40px;
   line-height: 40px;
   font-size: 24px;
-  font-weight: bold;
   text-align: center;
   cursor: pointer;
 }

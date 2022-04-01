@@ -8,15 +8,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ant-design/icons-vue": "^6.1.0",
-    "ant-design-vue": "^2.2.8",
+    "axios": "^0.26.1",
+    "element-plus": "^2.1.7",
     "pinia": "^2.0.12",
     "vue": "^3.2.25",
     "vue-router": "4"
   },
   "devDependencies": {
+    "@iconify/vue": "^3.2.0",
     "@vitejs/plugin-vue": "^2.2.0",
     "@vue/compiler-sfc": "^3.2.31",
-    "vite": "^2.8.0"
+    "sass": "^1.49.10",
+    "unplugin-auto-import": "^0.6.8",
+    "unplugin-vue-components": "^0.18.5",
+    "vite": "^2.9.0"
   }
 }
