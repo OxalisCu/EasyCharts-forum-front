@@ -5,7 +5,7 @@ import Menu from './components/menu/Menu.vue'
 <template>
   <Menu class="menu"/>
   <el-row class="content" justify="center">
-    <el-col :span="17">
+    <el-col :xs="22" :sm="22" :md="22" :lg="18" :xl="15">
       <router-view></router-view>
     </el-col>
   </el-row>
@@ -28,7 +28,7 @@ body {
   height: 60px;
   width: 100%;
   position: fixed;
-  box-shadow: 0px 0px 3px #ccc;
+  box-shadow: 0 0 3px #ccc;
   z-index: 999;
   background-color: #fff;
 }
