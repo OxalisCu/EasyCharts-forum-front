@@ -1,43 +1,64 @@
 <script setup>
 import TopicSwiper from '../components/topicswiper/TopicSwiper.vue'
+import {useTopicStore} from "../store/topic.js"
+import {onMounted} from "vue"
+import PostFilterSimple from "../components/postfilter/PostFilterSimple.vue"
+import CreateCard from '../components/createcard/CreateCard.vue'
+
+const topicStore = useTopicStore()
+
+onMounted(async () => {
+  // const topicList = await topicStore.getList()
+  // const topicDetail = await topicStore.getDetail()
+  // console.log(topicList)
+  // console.log(topicDetail)
+})
+
 </script>
 
 <template>
   <div class="home-page">
-    <el-row class="topic-tip" justify="space-between" align="middle">
-      <el-col :span="2">
-        <div class="text">话题列表</div>
+    <!--  话题列表的提示  -->
+    <el-row class="topic-tip" justify="space-between">
+      <el-col :span="12" class="tip-text">
+        <span class="text">话题列表</span>
       </el-col>
-      <el-col :span="4">
+      <el-col :span="12">
         <el-row class="right" justify="end">
-          <Icon class="icon" icon="tabler:sum"></Icon>
-          <div class="text">共 5 个话题</div>
+          5 个话题
         </el-row>
       </el-col>
     </el-row>
+    <!--  话题列表  -->
     <TopicSwiper />
-    <el-row class="post-square" :gutter="20">
-      <el-col class="post-list" :span="18">
-        <el-row class="post-tip" justify="space-between" align="middle">
-          <el-col :span="4">
-            <div class="text">帖子浏览</div>
+    <!--  帖子广场  -->
+    <el-row class="post-square" :gutter="15">
+      <!--  发布和公告  -->
+      <el-col class="other" :xs="24" :sm="8" :md="6">
+        <div class="pub-tip">
+          <span class="text">发布与公告</span>
+        </div>
+        <CreateCard class="create-card" />
+        <BroadCard />
+      </el-col>
+      <!--   话题列表   -->
+      <el-col class="post-list" :xs="24" :sm="16" :md="18">
+        <!--   话题列表提示和筛选器     -->
+        <el-row class="post-tip" justify="space-between">
+          <el-col class="text" :span="10">
+            帖子浏览
           </el-col>
-          <el-col :span="8">
+          <el-col :span="10">
             <el-row class="right" justify="end">
               <PostFilterSimple />
             </el-row>
           </el-col>
         </el-row>
+        <!--    话题列表    -->
         <el-row class="posts">
           <PostCard class="item" />
           <PostCard class="item" />
           <PostCard class="item" />
-        </el-row>
-      </el-col>
-      <el-col class="other" :span="6">
-        <el-row justify="center">
-          <el-button class="create-post" type="primary">发表帖子</el-button>
-          <BroadCard />
         </el-row>
       </el-col>
     </el-row>
@@ -49,24 +70,26 @@ import TopicSwiper from '../components/topicswiper/TopicSwiper.vue'
 }
 
 .topic-tip,
-.post-tip {
-  height: 60px;
-}
-
-.text {
+.post-tip,
+.pub-tip {
   font-size: 16px;
-  margin-left: 10px;
-  position: relative;
+  padding: 20px 5px 15px;
 }
 
 .topic-tip::before,
-.post-tip::before {
+.post-tip::before,
+.pub-tip::before {
   content: '';
   width: 4px;
   height: 20px;
+  line-height: 20px;
   background-color: #333;
   position: absolute;
-  left: 0px;
+}
+
+.text {
+  margin-left: 10px;
+  position: relative;
 }
 
 .right .icon {
@@ -76,15 +99,14 @@ import TopicSwiper from '../components/topicswiper/TopicSwiper.vue'
 
 .post-square {
   margin-top: 10px;
+  flex-direction: row-reverse;
 }
 
 .posts .item {
   margin-bottom: 10px;
 }
 
-.create-post {
-  margin: 10px 0;
-  width: 80%;
-  height: 40px;
+.create-card {
+  margin-bottom: 10px;
 }
 </style>
