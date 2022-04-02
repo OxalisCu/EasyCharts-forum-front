@@ -4,12 +4,18 @@ import {useTopicStore} from "../store/topic.js"
 import {onMounted, ref} from "vue"
 import PostFilterSimple from "../components/postfilter/PostFilterSimple.vue"
 import CreateCard from '../components/createcard/CreateCard.vue'
+import PostList from '../components/postlist/PostList.vue'
+import {usePostStore} from "../store/post"
 
 const topicStore = useTopicStore()
 const topicNum = ref(0)
 
+const postStore = usePostStore()
+const postTotalNum = ref(0)
+
 onMounted(async () => {
   topicNum.value = topicStore.getNum()
+  postTotalNum.value = postStore.getTotalNum()
 })
 
 </script>
@@ -21,10 +27,8 @@ onMounted(async () => {
       <el-col :span="12" class="tip-text">
         <span class="text">话题列表</span>
       </el-col>
-      <el-col :span="12">
-        <el-row class="right" justify="end">
-          {{topicNum}} 个话题
-        </el-row>
+      <el-col class="right" :span="12">
+        {{topicNum}} 个话题
       </el-col>
     </el-row>
     <!--  话题列表  -->
@@ -39,24 +43,23 @@ onMounted(async () => {
         <CreateCard class="create-card" />
         <BroadCard />
       </el-col>
-      <!--   话题列表   -->
+      <!--  帖子列表  -->
       <el-col class="post-list" :xs="24" :sm="16" :md="18">
-        <!--   话题列表提示和筛选器     -->
+        <!--   帖子列表提示和筛选器     -->
         <el-row class="post-tip" justify="space-between">
-          <el-col class="text" :span="10">
+          <el-col class="text" :span="6">
             帖子浏览
           </el-col>
-          <el-col :span="10">
-            <el-row class="right" justify="end">
-              <PostFilterSimple />
-            </el-row>
+          <el-col :span="5">
+            <PostFilterSimple />
+          </el-col>
+          <el-col class="right" :span="11">
+            {{postTotalNum}} 篇帖子
           </el-col>
         </el-row>
-        <!--    话题列表    -->
+        <!--   帖子   -->
         <el-row class="posts">
-          <PostCard class="item" />
-          <PostCard class="item" />
-          <PostCard class="item" />
+          <PostList />
         </el-row>
       </el-col>
     </el-row>
@@ -87,8 +90,12 @@ onMounted(async () => {
 }
 
 .text {
-  margin-left: 15px;
+  margin-left: 12px;
   position: relative;
+}
+
+.right {
+  text-align: right;
 }
 
 .post-square {
