@@ -6,10 +6,10 @@ import PostFilterSimple from "../components/postfilter/PostFilterSimple.vue"
 import CreateCard from '../components/createcard/CreateCard.vue'
 
 const topicStore = useTopicStore()
-const topicList = ref([])
+const topicNum = ref(0)
 
 onMounted(async () => {
-  topicList.value = (await topicStore.getList()).value
+  topicNum.value = topicStore.getNum()
 })
 
 </script>
@@ -23,14 +23,12 @@ onMounted(async () => {
       </el-col>
       <el-col :span="12">
         <el-row class="right" justify="end">
-          {{topicList.length}} 个话题
+          {{topicNum}} 个话题
         </el-row>
       </el-col>
     </el-row>
     <!--  话题列表  -->
-    <TopicSwiper
-      :topicList="topicList"
-    />
+    <TopicSwiper />
     <!--  帖子广场  -->
     <el-row class="post-square" :gutter="15">
       <!--  发布和公告  -->

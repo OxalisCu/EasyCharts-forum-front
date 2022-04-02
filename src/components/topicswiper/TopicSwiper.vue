@@ -1,13 +1,14 @@
 <script setup>
 import TopicCard from './TopicCard.vue'
-import {ref, toRefs} from "vue";
+import {onMounted, ref} from "vue";
+import {useTopicStore} from "../../store/topic";
 
-// 渲染话题卡片
-const props = defineProps({
-  topicList: Object
+const topicStore = useTopicStore()
+const topicList = ref([])
+
+onMounted(async () => {
+  topicList.value = (await topicStore.getList()).value
 })
-
-const {topicList} = toRefs(props)
 
 // 处理话题卡片左右滑动
 const container = ref()
