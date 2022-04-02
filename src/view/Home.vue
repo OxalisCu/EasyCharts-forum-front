@@ -1,17 +1,15 @@
 <script setup>
 import TopicSwiper from '../components/topicswiper/TopicSwiper.vue'
 import {useTopicStore} from "../store/topic.js"
-import {onMounted} from "vue"
+import {onMounted, ref} from "vue"
 import PostFilterSimple from "../components/postfilter/PostFilterSimple.vue"
 import CreateCard from '../components/createcard/CreateCard.vue'
 
 const topicStore = useTopicStore()
+const topicList = ref([])
 
 onMounted(async () => {
-  // const topicList = await topicStore.getList()
-  // const topicDetail = await topicStore.getDetail()
-  // console.log(topicList)
-  // console.log(topicDetail)
+  topicList.value = (await topicStore.getList()).value
 })
 
 </script>
@@ -25,12 +23,14 @@ onMounted(async () => {
       </el-col>
       <el-col :span="12">
         <el-row class="right" justify="end">
-          5 个话题
+          {{topicList.length}} 个话题
         </el-row>
       </el-col>
     </el-row>
     <!--  话题列表  -->
-    <TopicSwiper />
+    <TopicSwiper
+      :topicList="topicList"
+    />
     <!--  帖子广场  -->
     <el-row class="post-square" :gutter="15">
       <!--  发布和公告  -->
@@ -85,16 +85,12 @@ onMounted(async () => {
   line-height: 20px;
   background-color: #333;
   position: absolute;
+  border-radius: 2px;
 }
 
 .text {
-  margin-left: 10px;
+  margin-left: 15px;
   position: relative;
-}
-
-.right .icon {
-  color: #333;
-  font-size: 22px;
 }
 
 .post-square {

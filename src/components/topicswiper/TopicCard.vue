@@ -1,9 +1,28 @@
 <script setup>
+import {onMounted, toRefs, ref} from "vue";
+
+const props = defineProps({
+  topicDetail: Object
+})
+
+const emits = defineEmits([
+  'cardWidth'
+])
+
+// 接受数据渲染
+const {topicDetail} = toRefs(props)
+
+// 子组件挂载到 dom 上后将宽度传给父组件
+const card = ref()
+onMounted(() => {
+  emits('cardWidth', card.value.clientWidth)
+})
+
 const url = "https://cdn.w3cbus.com/community.mdclub.org/upload/topic-cover/ec/cb/0f65328a002b40efa0ce8722201042ce.jpg?x-oss-process=image/resize,m_fill,w_360,h_202,limit_0/format,webp"
 </script>
 
 <template>
-  <div class="topic-card card-border card-hover">
+  <div class="topic-card card-border card-hover" ref="card">
     <el-image class="topic-cover" :src="url" fit="cover">
       <template #error>
         <div>
@@ -11,13 +30,14 @@ const url = "https://cdn.w3cbus.com/community.mdclub.org/upload/topic-cover/ec/c
         </div>
       </template>
     </el-image>
-    <div class="msg" v-waves>
+    <div class="msg">
       <div class="top">
-        <span class="topic-title">问题反馈</span>
+        <span class="topic-title">{{topicDetail.title}}</span>
         <span>进入</span>
       </div>
       <div class="bottom">
-        帖子数 100
+        <span>帖子数</span>
+        <span>{{topicDetail.postnum}}</span>
       </div>
     </div>
   </div>
@@ -50,9 +70,14 @@ const url = "https://cdn.w3cbus.com/community.mdclub.org/upload/topic-cover/ec/c
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
+  font-size: 16px;
 }
 
 .topic-card .bottom {
   height: 40%;
+}
+
+.bottom>span:first-child {
+  margin-right: 10px;
 }
 </style>
