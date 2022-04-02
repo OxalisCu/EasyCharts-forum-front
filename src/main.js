@@ -1,20 +1,28 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import {router} from './router'
+import router from './router'
 import ElementPlus from 'element-plus'
 import {Icon} from '@iconify/vue'
 import './styles/index.css'
-import directives from './directives/index.js'
-import store from './store/index.js'
+import {createPinia} from "pinia";
 
 const app = createApp(App)
+const pinia = createPinia()
 
 app.config.productionTip = false;
+
+app.config.errorHandler = function (err) {
+  console.log(err)
+}
+
+app.config.warnHandler = function (warn) {
+  console.log(warn)
+}
 
 app
   .component("Icon", Icon)
   .use(ElementPlus)
   .use(router)
+  .use(pinia)
   // .use(directives)
-  .use(store)
   .mount('#app')
