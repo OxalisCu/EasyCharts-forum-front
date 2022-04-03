@@ -1,5 +1,6 @@
 <script setup>
 import BroadItem from './BroadItem.vue'
+import PlaceHolder from '../placeholder/PlaceHolder.vue'
 import {onMounted, ref, toRefs} from "vue";
 import {useBroadStore} from "../../store/broad"
 
@@ -30,9 +31,10 @@ onMounted(async () => {
         :broadDetail="item"
       />
     </div>
-    <div class="no-broad" v-if="!broadList.length">
-      还没有公告哦
-    </div>
+    <PlaceHolder
+      class="placeholder"
+      v-if="!broadList.length"
+    />
   </div>
 </template>
 
@@ -58,8 +60,8 @@ onMounted(async () => {
   padding-top: 10px;
 }
 
-.no-broad {
-  padding: 25px 0;
+.placeholder {
+  padding: 25px 5px 15px;
 }
 
 .broad-item {

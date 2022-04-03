@@ -1,5 +1,6 @@
 <script setup>
 import PostCard from './PostCard.vue'
+import PlaceHolder from '../placeholder/PlaceHolder.vue'
 import {usePostStore} from "../../store/post.js"
 import {onMounted, ref, toRefs, watch} from "vue";
 
@@ -60,38 +61,55 @@ async function getPostList() {
 </script>
 
 <template>
-  <div class="post-list">
+  <div class="post-list" v-if="postList.length">
     <PostCard
       class="item"
       v-for="post in postList"
       :key="post.postId"
       :postDetail="post"
     />
+    <div class="post-pagination">
+      <el-pagination
+        class="pagination"
+        :hide-on-single-page="true"
+        v-model:page-size="pageSize"
+        v-model:current-page="pageIndex"
+        :total="totalNum"
+        :pager-count="4"
+        background
+        layout="prev, pager, next"
+      />
+    </div>
   </div>
-  <div class="post-pagination">
-    <el-pagination
-      class="pagination"
-      :hide-on-single-page="true"
-      v-model:page-size="pageSize"
-      v-model:current-page="pageIndex"
-      :total="totalNum"
-      :pager-count="4"
-      background
-      layout="prev, pager, next"
-    />
+  <div class="holder card-border card-hover" v-else>
+    <PlaceHolder />
   </div>
 </template>
 
 <style scoped>
+.post-list {
+  width: 100%;
+}
+
+.holder {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .item {
   margin-bottom: 10px;
 }
 
 .post-pagination {
-  width: 100%;
-  padding: 20px 0 30px;
   display: flex;
   justify-content: center;
-  font-size: 14px;
+  align-items: center;
+}
+
+.pagination {
+  margin: 20px 0px;
 }
 </style>

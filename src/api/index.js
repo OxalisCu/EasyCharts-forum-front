@@ -1,4 +1,5 @@
 import request from "./axios"
+import axios from 'axios'
 
 // 请求所有话题列表
 export async function getTopicList(params) {
@@ -86,4 +87,22 @@ export async function getUserDetail(params) {
       ...params
     }
   })
+}
+
+// 获取一言推荐，临时这么写，到时候会把一言部署到后端
+export async function getSentence(params) {
+  let sentence = {
+    text: '本来无一物，何处惹尘埃',
+    from: '惠能'
+  }
+  try {
+    const res = await axios.get('https://v1.hitokoto.cn')
+    sentence = {
+      text: res.data.data.hitokoto,
+      from: data.data.fom
+    }
+  } catch (err) {
+    console.log(err)
+  }
+  return sentence
 }

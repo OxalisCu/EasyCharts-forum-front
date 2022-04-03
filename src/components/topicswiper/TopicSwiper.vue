@@ -1,5 +1,6 @@
 <script setup>
 import TopicCard from './TopicCard.vue'
+import PlaceHolder from '../placeholder/PlaceHolder.vue'
 import {onMounted, ref} from "vue";
 import {useTopicStore} from "../../store/topic";
 
@@ -43,7 +44,7 @@ function handleSwiper(type) {
 </script>
 
 <template>
-  <div class="topic-swiper" ref="container">
+  <div class="topic-swiper" ref="container" v-if="topicList.length">
     <el-row
       class="topic-list"
       :gutter="15"
@@ -68,12 +69,22 @@ function handleSwiper(type) {
       <Icon icon="akar-icons:chevron-right"></Icon>
     </div>
   </div>
-
+  <div class="holder card-border card-hover" v-else>
+    <PlaceHolder />
+  </div>
 </template>
 
 <style scoped>
 .topic-swiper {
   position: relative;
+}
+
+.holder {
+  height: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .topic-list {
