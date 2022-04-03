@@ -31,19 +31,19 @@ const {postDetail} = toRefs(props)
           </el-col>
         </el-row>
       </el-col>
-      <el-col class="right" :xs="7" :sm="11" :md="8">
+      <el-col class="right link-text" :xs="7" :sm="11" :md="8">
         <span># {{postDetail.topicmsg.title}}</span>
         <span v-if="postDetail.ismark"> | 精选</span>
         <span v-if="postDetail.isnotice"> | 公告</span>
       </el-col>
     </el-row>
     <el-row class="post-content">
-      <div class="title">
+      <el-col class="title link-text">
         {{postDetail.title}}
-      </div>
-      <div class="text">
+      </el-col>
+      <el-col class="text">
         {{postDetail.content}}
-      </div>
+      </el-col>
     </el-row>
     <el-row class="post-operate" justify="space-between">
       <el-col class="left" :span="10">
@@ -57,7 +57,7 @@ const {postDetail} = toRefs(props)
         </div>
       </el-col>
       <el-col class="right" :span="2">
-        <Icon class="icon" icon="ant-design:setting-outlined"></Icon>
+        <Icon class="icon click-btn" icon="ant-design:setting-outlined"></Icon>
       </el-col>
     </el-row>
   </div>
@@ -69,7 +69,6 @@ const {postDetail} = toRefs(props)
   box-sizing: border-box;
   padding: 15px 20px;
   background-color: #fff;
-  cursor: pointer;
 }
 
 .avatar {
@@ -93,7 +92,6 @@ const {postDetail} = toRefs(props)
 
 .post-head .right {
   text-align: right;
-  font-weight: bold;
 }
 
 .post-content{
@@ -102,7 +100,6 @@ const {postDetail} = toRefs(props)
 
 .post-content .title{
   font-size: 16px;
-  font-weight: bold;
   padding: 5px 0 10px;
 }
 
@@ -143,5 +140,10 @@ const {postDetail} = toRefs(props)
 
 .right {
   text-align: right;
+}
+
+.right .icon {
+  padding: 8px;
+  border-radius: 5px;
 }
 </style>

@@ -31,7 +31,7 @@ const url = "https://cdn.w3cbus.com/community.mdclub.org/upload/topic-cover/ec/c
       </template>
     </el-image>
     <div class="msg">
-      <div class="top">
+      <div class="top link-text">
         <span class="topic-title">{{topicDetail.title}}</span>
         <span>进入</span>
       </div>
@@ -48,7 +48,6 @@ const url = "https://cdn.w3cbus.com/community.mdclub.org/upload/topic-cover/ec/c
   width: 100%;
   height: 100%;
   overflow: hidden;
-  cursor: pointer;
   background-color: #fff;
 }
 
@@ -69,7 +68,6 @@ const url = "https://cdn.w3cbus.com/community.mdclub.org/upload/topic-cover/ec/c
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: bold;
   font-size: 16px;
 }
 

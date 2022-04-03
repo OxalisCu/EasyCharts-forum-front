@@ -1,6 +1,5 @@
 .card-border {
     border: 1px solid #ddd;
-    /*box-shadow: 0 0 10px #ddd;*/
     border-radius: 10px;
 }
 
@@ -8,3 +7,21 @@
 /*    box-shadow: 0 0 10px #ddd;*/
 /*    transition: box-shadow 0.3s;*/
 /*}*/
+
+.link-text {
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.link-text:hover {
+    color: #999;
+}
+
+.click-btn {
+    cursor: pointer;
+}
+
+.click-btn:hover {
+    background-color: #f0f2f5;
+}
