@@ -22,13 +22,16 @@ onMounted(async () => {
       <Icon class="icon" icon="ri:broadcast-fill"></Icon>
       <span>公告</span>
     </div>
-    <div class="broad-list">
+    <div class="broad-list" v-if="broadList.length">
       <BroadItem
         class="broad-item"
         v-for="item in broadList"
         :key="item.postId"
         :broadDetail="item"
       />
+    </div>
+    <div class="no-broad" v-if="!broadList.length">
+      还没有公告哦
     </div>
   </div>
 </template>
@@ -53,6 +56,10 @@ onMounted(async () => {
 
 .broad-list {
   padding-top: 10px;
+}
+
+.no-broad {
+  padding: 25px 0;
 }
 
 .broad-item {
