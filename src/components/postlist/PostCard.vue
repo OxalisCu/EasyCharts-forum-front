@@ -1,6 +1,6 @@
 <script setup>
 import {toRefs} from "vue";
-import Default from '../../assets/default.png'
+import defaultAvatar from '../../assets/default-avatar.jpg'
 
 const props = defineProps({
   postDetail: Object
@@ -16,7 +16,7 @@ const {postDetail} = toRefs(props)
         <el-row align="middle">
           <el-col class="avatar">
             <el-avatar :src="postDetail.userMsg.avatar">
-              <img :src="Default" />
+              <img :src="defaultAvatar" fit="cover" />
             </el-avatar>
           </el-col>
           <el-col :span="17">

@@ -1,5 +1,6 @@
 <script setup>
-import {onMounted, toRefs, ref} from "vue";
+import {onMounted, toRefs, ref} from "vue"
+import defaultCover from '../../assets/default-cover.jpg'
 
 const props = defineProps({
   topicDetail: Object
@@ -17,15 +18,13 @@ const card = ref()
 onMounted(() => {
   emits('cardWidth', card.value.clientWidth)
 })
-
-const url = "https://cdn.w3cbus.com/community.mdclub.org/upload/topic-cover/ec/cb/0f65328a002b40efa0ce8722201042ce.jpg?x-oss-process=image/resize,m_fill,w_360,h_202,limit_0/format,webp"
 </script>
 
 <template>
   <div class="topic-card card-border card-hover" ref="card">
     <el-image class="topic-cover" :src="topicDetail.cover" fit="cover">
       <template #error>
-        <el-image :src="url" fit="cover"></el-image>
+        <el-image :src="defaultCover" fit="cover"></el-image>
       </template>
     </el-image>
     <div class="msg">
