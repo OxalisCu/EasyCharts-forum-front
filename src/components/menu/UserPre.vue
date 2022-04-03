@@ -3,7 +3,7 @@ import {ref} from "vue"
 import defaultAvatar from '../../assets/default-avatar.jpg'
 
 const avatar = ref('')
-const isLogin = ref(false)
+const isLogin = ref(true)
 </script>
 
 <template>
@@ -23,7 +23,7 @@ const isLogin = ref(false)
       <div class="log-out">退出</div>
     </div>
   </el-popover>
-  <div class="not-login link-text">
+  <div class="not-login link-text" v-else>
     未登录
   </div>
 </template>
