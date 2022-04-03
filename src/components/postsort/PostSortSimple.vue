@@ -1,5 +1,6 @@
 <script setup>
 import {onMounted, ref, toRefs} from "vue"
+import {useSortStore} from "../../store/sort";
 
 const props = defineProps({
   sortIndex: Number
@@ -10,28 +11,12 @@ const emits = defineEmits([
   'sortIndex'
 ])
 
-const sortList = ref([
-  {
-    'id': 0,
-    'desc': '推荐'
-  },
-  {
-    'id': 1,
-    'desc': '精选'
-  },
-  {
-    'id': 2,
-    'desc': '从新到旧'
-  },
-  {
-    'id': 3,
-    'desc': '从旧到新'
-  },
-  {
-    'id': 4,
-    'desc': '公告'
-  },
-])
+const sortStore = useSortStore()
+const sortList = ref([])
+
+onMounted(async () => {
+  sortList.value = (await sortStore.getList()).value
+})
 
 const curIndex = ref(0)
 curIndex.value = sortIndex.value
@@ -47,12 +32,12 @@ function updateIndex() {
 
 const dialogVisible = ref(false)
 function openDialog() {
-  dialogVisible.value = true;
+  dialogVisible.value = true
 }
 </script>
 
 <template>
-  <div class="post-filter-simple click-btn" @click="openDialog">
+  <div class="post-filter-simple click-btn" @click="openDialog" v-if="sortList.length">
     <Icon class="icon" icon="clarity:filter-solid"></Icon>
     <div>{{sortList[sortIndex].desc}}</div>
   </div>

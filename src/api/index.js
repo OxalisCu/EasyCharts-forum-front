@@ -33,6 +33,17 @@ export async function getPostList(params) {
   })
 }
 
+// 请求帖子筛选条件
+export async function  getSortList(params) {
+  return request('/api/sortList', {
+    method: 'get',
+    responseType: 'json',
+    params: {
+      ...params
+    }
+  })
+}
+
 // 根据关键词请求帖子列表
 export async function searchPostList(params) {
   return request('/api/searchPostList', {
