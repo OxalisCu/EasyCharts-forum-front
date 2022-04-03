@@ -2,7 +2,7 @@
 import TopicSwiper from '../components/topicswiper/TopicSwiper.vue'
 import {useTopicStore} from "../store/topic.js"
 import {onMounted, ref} from "vue"
-import PostFilterSimple from "../components/postfilter/PostFilterSimple.vue"
+import PostSortSimple from "../components/postsort/PostSortSimple.vue"
 import CreateCard from '../components/createcard/CreateCard.vue'
 import PostList from '../components/postlist/PostList.vue'
 import {usePostStore} from "../store/post"
@@ -18,6 +18,7 @@ onMounted(async () => {
   postTotalNum.value = postStore.getTotalNum()
 })
 
+const sortIndex = ref(0)
 </script>
 
 <template>
@@ -51,7 +52,9 @@ onMounted(async () => {
             帖子浏览
           </el-col>
           <el-col :span="5">
-            <PostFilterSimple />
+            <PostSortSimple
+              v-model:sort-index="sortIndex"
+            />
           </el-col>
           <el-col class="right" :span="11">
             {{postTotalNum}} 篇帖子
@@ -59,7 +62,9 @@ onMounted(async () => {
         </el-row>
         <!--   帖子   -->
         <el-row class="posts">
-          <PostList />
+          <PostList
+            v-model:sort="sortIndex"
+          />
         </el-row>
       </el-col>
     </el-row>

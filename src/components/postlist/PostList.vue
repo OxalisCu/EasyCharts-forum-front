@@ -39,9 +39,9 @@ async function getPostList() {
     const searchParams = {
       pageSize,
       pageIndex,
-      sort,
-      topicId,
-      keyword,
+      sort: sort && 0,
+      topicId: topicId && 0,
+      keyword: keyword && '',
     }
     postList.value = (await postStore.searchList(searchParams)).value
     totalNum.value = postStore.getTotalNum().value
@@ -50,8 +50,8 @@ async function getPostList() {
     const getParams = {
       pageSize,
       pageIndex,
-      sort,
-      topicId,
+      sort: sort && 0,
+      topicId: topicId && 0,
     }
     postList.value = (await postStore.getList(getParams)).value
     totalNum.value = postStore.getTotalNum().value
