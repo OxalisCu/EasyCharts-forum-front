@@ -6,12 +6,11 @@ const props = defineProps({
 })
 
 const {broadDetail} = toRefs(props)
-console.log('broadDetail', broadDetail)
 </script>
 
 <template>
   <div class="broad-item">
-    <div class="title">
+    <div class="title link-text">
       {{broadDetail.title}}
     </div>
     <el-row class="msg">
@@ -31,17 +30,9 @@ console.log('broadDetail', broadDetail)
   border-radius: 5px;
 }
 
-.broad-item:hover {
-  background-color: #eee;
-}
-
 .title {
   font-weight: bold;
   margin-bottom: 8px;
-}
-
-.msg {
-  color: #666;
 }
 
 .username {
@@ -52,5 +43,7 @@ console.log('broadDetail', broadDetail)
 
 .post-time {
   text-align: right;
+  color: #999;
+  font-size: 13px;
 }
 </style>
