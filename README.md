@@ -39,3 +39,7 @@ Next Generation Frontend Tooling [Vite](https://www.vitejs.net/)
 UI Framework [Element UI](https://element-plus.gitee.io/)
 
 Icon [Iconify](https://icon-sets.iconify.design/)
+
+Color [Chinese Color](https://colors.ichuantong.cn/)
+
+Random Sentences [yiyan](https://developer.hitokoto.cn/)
