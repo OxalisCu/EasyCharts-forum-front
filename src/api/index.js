@@ -98,8 +98,8 @@ export async function getSentence(params) {
   try {
     const res = await axios.get('https://v1.hitokoto.cn')
     sentence = {
-      text: res.data.data.hitokoto,
-      from: data.data.fom
+      text: res.data.hitokoto,
+      from: res.data.from
     }
   } catch (err) {
     console.log(err)

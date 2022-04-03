@@ -7,14 +7,21 @@ const sentence = ref({
   from: '惠能'
 })
 
-onMounted(async () => {
-  sentence.value = await getSentence()
+onMounted(() => {
+  refreshSentence()
 })
+
+async function refreshSentence() {
+  sentence.value = await getSentence()
+}
 </script>
 
 <template>
   <div class="placeholder">
-    <div class="tip">啥也没有，看看句子 _(:з」∠)_</div>
+    <div class="tip">
+      <Icon class="icon click-btn" icon="ci:refresh" @click="refreshSentence"></Icon>
+      <span>啥也没有，看看句子 _(:з」∠)_</span>
+    </div>
     <div class="sentence">{{sentence.text}}</div>
     <div class="from">from {{sentence.from}}</div>
   </div>
@@ -24,6 +31,19 @@ onMounted(async () => {
 .placeholder {
   width: 100%;
   text-align: center;
+}
+
+.tip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tip .icon {
+  font-size: 18px;
+  padding: 5px;
+  margin-right: 5px;
+  border-radius: 5px;
 }
 
 .sentence {
