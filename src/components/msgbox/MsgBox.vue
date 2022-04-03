@@ -1,22 +1,24 @@
 <script setup>
+import {ref} from "vue";
 
+const msgNum = ref(10)
 </script>
 
 <template>
-  <el-popover class="msgbox" placement="bottom" :width="300" trigger="hover">
-    <template #reference>
-      <el-badge class="msg" :value="200" :max="99">
-        <Icon class="icon" icon="ci:notification" />
-      </el-badge>
-    </template>
-    <p>
-      msg
-    </p>
-  </el-popover>
+  <el-badge class="msg click-btn" :value="msgNum" :max="99">
+    <Icon class="icon" icon="ci:notification" />
+  </el-badge>
 </template>
 
 <style scoped>
-.msgbox {
+.msg {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #eee;
 }
 
 .icon {
