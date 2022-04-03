@@ -7,10 +7,10 @@ export const usePostStore = defineStore('post', function() {
   // 返回结果
   let data = ref({
     total: 0,
-    postlist: []
+    postList: []
   })
-  let postList = computed(() => (data.value.postlist))
-  let listNum = computed(() => (data.value.postlist.length))
+  let postList = computed(() => (data.value.postList))
+  let listNum = computed(() => (data.value.postList.length))
   let totalNum = computed(() => (data.value.total))
 
   // 通过筛选条件获取 postList
@@ -48,7 +48,7 @@ export const usePostStore = defineStore('post', function() {
       return post
     }
     // 没找到重新请求并返回
-    const res = await getPostDetail({postid: postId})
+    const res = await getPostDetail({postId,})
     post.value = res.data.data.postDetail
     return post
   }

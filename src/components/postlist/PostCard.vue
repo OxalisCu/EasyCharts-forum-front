@@ -15,14 +15,14 @@ const {postDetail} = toRefs(props)
       <el-col :xs="16" :sm="12" :md="14">
         <el-row align="middle">
           <el-col class="avatar">
-            <el-avatar :src="postDetail.usermsg.avatar">
+            <el-avatar :src="postDetail.userMsg.avatar">
               <img :src="Default" />
             </el-avatar>
           </el-col>
           <el-col :span="17">
             <el-row>
               <el-col class="username" :xs="24" :sm="12">
-                {{postDetail.usermsg.name}}
+                {{postDetail.userMsg.name}}
               </el-col>
               <el-col class="time" :xs="24" :sm="12">
                 {{postDetail.time}}
@@ -32,9 +32,9 @@ const {postDetail} = toRefs(props)
         </el-row>
       </el-col>
       <el-col class="right link-text" :xs="7" :sm="11" :md="8">
-        <span># {{postDetail.topicmsg.title}}</span>
-        <span v-if="postDetail.ismark"> | 精选</span>
-        <span v-if="postDetail.isnotice"> | 公告</span>
+        <span># {{postDetail.topicMsg.title}}</span>
+        <span v-if="postDetail.isMark"> | 精选</span>
+        <span v-if="postDetail.isBroad"> | 公告</span>
       </el-col>
     </el-row>
     <el-row class="post-content">
@@ -49,11 +49,11 @@ const {postDetail} = toRefs(props)
       <el-col class="left" :span="10">
         <div class="view">
           <Icon class="icon" icon="carbon:view"></Icon>
-          <span class="num">{{postDetail.viewnum}}</span>
+          <span class="num">{{postDetail.viewNum}}</span>
         </div>
         <div class="comment">
           <Icon class="icon" icon="fa:comment-o"></Icon>
-          <span class="num">{{postDetail.commentnum}}</span>
+          <span class="num">{{postDetail.commentNum}}</span>
         </div>
       </el-col>
       <el-col class="right" :span="2">

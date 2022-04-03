@@ -15,7 +15,7 @@ const {broadDetail} = toRefs(props)
     </div>
     <el-row class="msg">
       <el-col class="username" :span="12">
-        {{broadDetail.usermsg.name}}
+        {{broadDetail.userMsg.name}}
       </el-col>
       <el-col class="post-time" :span="12">
         {{broadDetail.time}}

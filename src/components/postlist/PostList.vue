@@ -37,21 +37,21 @@ async function getPostList() {
   if(keyword) {
     // 搜索帖子
     const searchParams = {
-      pagesize: pageSize,
-      pageindex: pageIndex,
-      sort: sort,
-      topicId: topicId,
-      keyword: keyword
+      pageSize,
+      pageIndex,
+      sort,
+      topicId,
+      keyword,
     }
     postList.value = (await postStore.searchList(searchParams)).value
     totalNum.value = postStore.getTotalNum().value
   }else {
     // 获取帖子列表
     const getParams = {
-      pagesize: pageSize,
-      pageindex: pageIndex,
-      sort: sort,
-      topicId: topicId,
+      pageSize,
+      pageIndex,
+      sort,
+      topicId,
     }
     postList.value = (await postStore.getList(getParams)).value
     totalNum.value = postStore.getTotalNum().value
@@ -64,7 +64,7 @@ async function getPostList() {
     <PostCard
       class="item"
       v-for="post in postList"
-      :key="post.postid"
+      :key="post.postId"
       :postDetail="post"
     />
   </div>

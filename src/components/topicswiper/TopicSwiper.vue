@@ -52,7 +52,7 @@ function handleSwiper(type) {
         class="item"
         :xs="12" :sm="8" :md="6"
         v-for="topic in topicList"
-        :key="topic.topicid"
+        :key="topic.topicId"
         :style="{'transform': `translateX(${-offset*(cardWidth+gapWidth)}px)`}"
       >
         <TopicCard

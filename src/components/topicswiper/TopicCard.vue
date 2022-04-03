@@ -23,11 +23,9 @@ const url = "https://cdn.w3cbus.com/community.mdclub.org/upload/topic-cover/ec/c
 
 <template>
   <div class="topic-card card-border card-hover" ref="card">
-    <el-image class="topic-cover" :src="url" fit="cover">
+    <el-image class="topic-cover" :src="topicDetail.cover" fit="cover">
       <template #error>
-        <div>
-          <Icon icon="clarity:picture-line"></Icon>
-        </div>
+        <el-image :src="url" fit="cover"></el-image>
       </template>
     </el-image>
     <div class="msg">
@@ -37,7 +35,7 @@ const url = "https://cdn.w3cbus.com/community.mdclub.org/upload/topic-cover/ec/c
       </div>
       <div class="bottom">
         <span>帖子数</span>
-        <span>{{topicDetail.postnum}}</span>
+        <span>{{topicDetail.postNum}}</span>
       </div>
     </div>
   </div>

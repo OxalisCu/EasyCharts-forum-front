@@ -2,7 +2,7 @@ import request from "./axios"
 
 // 请求所有话题列表
 export async function getTopicList(params) {
-  return request('/api/topiclist', {
+  return request('/api/topicList', {
     method: 'get',
     responseType: 'json',
     params: {
@@ -13,7 +13,7 @@ export async function getTopicList(params) {
 
 // 请求话题详情
 export async function getTopicDetail(params) {
-  return request('/api/topicdetail', {
+  return request('/api/topicDetail', {
     method: 'get',
     responseType: 'json',
     params: {
@@ -24,7 +24,7 @@ export async function getTopicDetail(params) {
 
 // 请求帖子列表
 export async function getPostList(params) {
-  return request('/api/postlist', {
+  return request('/api/postList', {
     method: 'post',
     responseType: 'json',
     params: {
@@ -35,7 +35,7 @@ export async function getPostList(params) {
 
 // 根据关键词请求帖子列表
 export async function searchPostList(params) {
-  return request('/api/searchpostlist', {
+  return request('/api/searchPostList', {
     method: 'post',
     responseType: 'json',
     params: {
@@ -46,7 +46,7 @@ export async function searchPostList(params) {
 
 // 请求帖子详情
 export async function getPostDetail(params) {
-  return request('/api/postdetail', {
+  return request('/api/postDetail', {
     method: 'get',
     responseType: 'json',
     params: {
@@ -57,7 +57,7 @@ export async function getPostDetail(params) {
 
 // 请求评论列表
 export async function getCommentList(params) {
-  return request('/api/getcommentlist', {
+  return request('/api/commentList', {
     method: 'get',
     responseType: 'json',
     params: {
@@ -68,7 +68,7 @@ export async function getCommentList(params) {
 
 // 获取用户详情
 export async function getUserDetail(params) {
-  return request('/api/getuserdetail', {
+  return request('/api/userDetail', {
     method: 'get',
     responseType: 'json',
     params: {

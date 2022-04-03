@@ -26,7 +26,7 @@ onMounted(async () => {
       <BroadItem
         class="broad-item"
         v-for="item in broadList"
-        :key="item.postid"
+        :key="item.postId"
         :broadDetail="item"
       />
     </div>

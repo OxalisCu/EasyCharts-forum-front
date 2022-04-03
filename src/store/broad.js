@@ -11,16 +11,16 @@ export const useBroadStore = defineStore('broad', function() {
   // 通过筛选条件（话题 id）获取 broadList
   async function getList(topicId) {
     const params = {
-      pagesize: 100,
-      pageindex: 1,
+      pageSize: 100,
+      pageIndex: 1,
       sort: 4,
     }
     // 没有传 topicId 则获取所有公告
     if(topicId) {
-      params.topicid = topicId
+      params.topicId = topicId
     }
     const res = await getPostList(params)
-    broadList.value = res.data.data.postlist
+    broadList.value = res.data.data.postList
 
     return broadList
   }
