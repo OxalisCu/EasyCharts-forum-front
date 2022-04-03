@@ -79,7 +79,7 @@ function handleSwiper(type) {
 .topic-list {
   flex-wrap: nowrap;
   height: 200px;
-  padding: 2px 0;
+  padding: 2px 0px;
   overflow: hidden;
 }
 
