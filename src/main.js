@@ -3,8 +3,9 @@ import App from './App.vue'
 import router from './router'
 import ElementPlus from 'element-plus'
 import {Icon} from '@iconify/vue'
+import {createPinia} from "pinia"
 import './styles/index.css'
-import {createPinia} from "pinia";
+import 'element-plus/theme-chalk/el-message.css'
 
 const app = createApp(App)
 const pinia = createPinia()
