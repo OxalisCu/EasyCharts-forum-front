@@ -19,9 +19,12 @@ export const useBroadStore = defineStore('broad', function() {
     if(topicId) {
       params.topicId = topicId
     }
-    const res = await getPostList(params)
-    broadList.value = res.data.data.postList
-
+    try {
+      const res = await getPostList(params)
+      broadList.value = res.data.data.postList
+    } catch(err) {
+      broadList.value = []
+    }
     return broadList
   }
 
@@ -41,8 +44,12 @@ export const useBroadStore = defineStore('broad', function() {
       return broad
     }
     // 没找到重新请求并返回
-    const res = await getPostDetail({postid: postId})
-    broad.value = res.data.data.postdetail
+    try {
+      const res = await getPostDetail({postid: postId})
+      broad.value = res.data.data.postdetail
+    } catch(err) {
+      broad.value = null
+    }
     return broad
   }
 

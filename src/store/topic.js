@@ -13,8 +13,12 @@ export const useTopicStore = defineStore('topic', function() {
 
   // 获取 topicList
   async function getList() {
-    const res = await getTopicList()
-    topicList.value = res.data.data.topicList
+    try {
+      const res = await getTopicList()
+      topicList.value = res.data.data.topicList
+    }catch(err) {
+      topicList.value = []
+    }
     return topicList
   }
 
@@ -34,8 +38,12 @@ export const useTopicStore = defineStore('topic', function() {
       return topic
     }
     // 没找到重新请求并返回
-    const res = await getTopicDetail({topicId,})
-    topic.value = res.data.data.topicDetail
+    try {
+      const res = await getTopicDetail({topicId,})
+      topic.value = res.data.data.topicDetail
+    } catch (err) {
+      topic.value = null
+    }
     return topic
   }
 

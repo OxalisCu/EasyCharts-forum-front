@@ -15,15 +15,29 @@ export const usePostStore = defineStore('post', function() {
 
   // 通过筛选条件获取 postList
   async function getList(params) {
-    const res = await getPostList(params)
-    data.value = res.data.data
+    try {
+      const res = await getPostList(params)
+      data.value = res.data.data
+    } catch(err) {
+      data.value = {
+        total: 0,
+        postList: []
+      }
+    }
     return postList
   }
 
   // 通过关键词和筛选条件获取 postList
   async function searchList(params) {
-    const res = await searchPostList(params)
-    data.value = res.data.data
+    try {
+      const res = await searchPostList(params)
+      data.value = res.data.data
+    } catch (err) {
+      data.value = {
+        total: 0,
+        postList: []
+      }
+    }
     return postList
   }
 
@@ -48,8 +62,12 @@ export const usePostStore = defineStore('post', function() {
       return post
     }
     // 没找到重新请求并返回
-    const res = await getPostDetail({postId,})
-    post.value = res.data.data.postDetail
+    try {
+      const res = await getPostDetail({postId,})
+      post.value = res.data.data.postDetail
+    } catch(err) {
+      post.value = null
+    }
     return post
   }
 

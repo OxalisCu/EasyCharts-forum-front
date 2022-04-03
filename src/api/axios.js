@@ -90,7 +90,8 @@ request.interceptors.request.use((config) => {
   return config
 }, (error) => {
   console.log('request interceptor error', error);
-  ElMessage('网络错误！')
+  ElMessage.error('网络错误！')
+  Promise.reject(error)
 })
 
 // 响应拦截器
@@ -108,7 +109,8 @@ request.interceptors.response.use((response) => {
       response.data.msg = msg
     }
     console.log("network error", response)
-    ElMessage('网络错误！')
+    ElMessage.error('网络错误！')
+    Promise.reject(response)
   }
   return response
 }, (error) => {
@@ -117,10 +119,12 @@ request.interceptors.response.use((response) => {
   // 请求被取消
   if(axios.isCancel(error)) {
     console.log('repeated request: ' + error.message)
+    ElMessage.error('重复请求')
   } else {
     console.log('response interceptor error', error);
     ElMessage.error('网络错误！')
   }
+  Promise.reject(error)
 })
 
 export default request
