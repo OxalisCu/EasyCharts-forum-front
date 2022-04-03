@@ -30,6 +30,7 @@ function handleBlur (e) {
 
 <style scoped>
 .searchbox {
+  width: 100%;
   border-radius: 5px;
   overflow: hidden;
 }
