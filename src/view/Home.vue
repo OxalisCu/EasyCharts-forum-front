@@ -23,7 +23,7 @@ onMounted(async () => {
 <template>
   <div class="home-page">
     <!--  话题列表的提示  -->
-    <el-row class="topic-tip" justify="space-between">
+    <el-row class="topic-tip" justify="space-between" align="middle">
       <el-col :span="12" class="tip-text">
         <span class="text">话题列表</span>
       </el-col>
@@ -37,16 +37,16 @@ onMounted(async () => {
     <el-row class="post-square" :gutter="15">
       <!--  发布和公告  -->
       <el-col class="other" :xs="24" :sm="8" :md="6">
-        <div class="pub-tip">
+        <el-row class="pub-tip" justify="space-between" align="middle">
           <span class="text">发布与公告</span>
-        </div>
+        </el-row>
         <CreateCard class="create-card" />
         <BroadCard />
       </el-col>
       <!--  帖子列表  -->
       <el-col class="post-list" :xs="24" :sm="16" :md="18">
         <!--   帖子列表提示和筛选器     -->
-        <el-row class="post-tip" justify="space-between">
+        <el-row class="post-tip" justify="space-between" align="middle">
           <el-col class="text" :span="6">
             帖子浏览
           </el-col>
@@ -74,7 +74,8 @@ onMounted(async () => {
 .post-tip,
 .pub-tip {
   font-size: 16px;
-  padding: 20px 5px 15px;
+  line-height: 30px;
+  padding: 14px 5px 6px;
 }
 
 .topic-tip::before,
@@ -83,7 +84,7 @@ onMounted(async () => {
   content: '';
   width: 4px;
   height: 20px;
-  line-height: 20px;
+  line-height: 30px;
   background-color: #333;
   position: absolute;
   border-radius: 2px;
@@ -99,7 +100,6 @@ onMounted(async () => {
 }
 
 .post-square {
-  margin-top: 10px;
   flex-direction: row-reverse;
 }
 
