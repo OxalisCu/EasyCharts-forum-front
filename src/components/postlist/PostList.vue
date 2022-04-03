@@ -26,13 +26,28 @@ onMounted(async () => {
   await getPostList()
 })
 
+// 防止重复请求
+// 当切换筛选条件（pageSize、sort、topicId、keyword）时，先将页码（pageIndex）置为 1，然后通过筛选条件发起请求
+// 但是页码（pageIndex）被监听，其改变时也会发起请求，此时请求重复
+// 可以在监听页码（pageIndex）时，判断其改变是因为筛选条件改变还是切换页码，如果是筛选条件改变时将页码置 1，则不发起请求
+const changePage = ref(true)
 watch(
-  () => [pageSize, pageIndex, sort, topicId, keyword],
-  () => {
-    getPostList()
+  () => [pageSize, sort, topicId, keyword],
+  async (val, preVal) => {
+    changePage.value = false
+    pageIndex.value = 1
+    await getPostList()
   },
   {deep: true}
 )
+
+watch(pageIndex, async () => {
+  if(changePage.value) {
+    await getPostList()
+  } else {
+    changePage.value = true
+  }
+})
 
 async function getPostList() {
   if(keyword.value) {
