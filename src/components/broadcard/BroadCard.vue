@@ -12,7 +12,7 @@ const broadStore = useBroadStore()
 const broadList = ref([])
 
 onMounted(async () => {
-  broadList.value = (await broadStore.getList(topicId)).value
+  broadList.value = (await broadStore.getList(topicId.value)).value
 })
 </script>
 

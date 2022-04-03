@@ -36,8 +36,6 @@ const sortList = ref([
 const curIndex = ref(0)
 curIndex.value = sortIndex.value
 
-console.log(curIndex.value)
-
 function selectIndex(index) {
   curIndex.value = index;
 }
