@@ -18,10 +18,10 @@ import MsgBox from "./MsgBox.vue"
       <div class="search-box">
         <SearchBox />
       </div>
-      <div  class="search-box-simple">
-        <SearchBoxSimple />
-      </div>
       <div class="right">
+        <div class="search-box-simple">
+          <SearchBoxSimple />
+        </div>
         <MsgBox class="msg-box" />
         <UserPre />
       </div>
@@ -70,9 +70,10 @@ import MsgBox from "./MsgBox.vue"
     display: none;
   }
   .search-box-simple {
-    display: flex;
-    position: absolute;
-    right: 180px;
+    display: block;
+  }
+  .right {
+    width: 180px;
   }
 }
 
@@ -82,12 +83,6 @@ import MsgBox from "./MsgBox.vue"
   }
   .logo-simple {
     display: flex;
-  }
-  .right {
-    width: 100px;
-  }
-  .search-box-simple {
-    right: 150px;
   }
 }
 </style>
