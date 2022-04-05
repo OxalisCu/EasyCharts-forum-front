@@ -1,6 +1,11 @@
 name: demo
 on:
-  [push]
+  push:
+    branches:
+      - master
+  delete:
+    branches:
+      - master
 
 jobs:
   run:
