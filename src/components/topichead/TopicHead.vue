@@ -20,7 +20,7 @@ const {topicDetail} = toRefs(props)
     <el-col class="middle" :xs="10" :sm="12" :md="15">
       <div class="title">{{topicDetail.title}}</div>
       <div class="msg">
-        <span>帖子数</span>
+        <span class="tip">帖子数</span>
         <span>{{topicDetail.postNum}}</span>
       </div>
       <div class="desc">
@@ -71,6 +71,10 @@ const {topicDetail} = toRefs(props)
 .msg {
   color: #666;
   line-height: 30px;
+}
+
+.msg .tip {
+  margin-right: 10px;
 }
 
 .desc {
