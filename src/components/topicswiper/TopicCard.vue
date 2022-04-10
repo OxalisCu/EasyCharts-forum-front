@@ -1,6 +1,7 @@
 <script setup>
 import {onMounted, toRefs, ref} from "vue"
 import defaultCover from '../../assets/default-cover.jpg'
+import {useRouter} from "vue-router";
 
 const props = defineProps({
   topicDetail: Object
@@ -18,6 +19,17 @@ const card = ref()
 onMounted(() => {
   emits('cardWidth', card.value.clientWidth)
 })
+
+const router = useRouter()
+function clickTitle(topicId) {
+  console.log(topicId)
+  router.push({
+    path: '/topicDetail',
+    query: {
+      topicId,
+    }
+  })
+}
 </script>
 
 <template>
@@ -28,7 +40,7 @@ onMounted(() => {
       </template>
     </el-image>
     <div class="msg">
-      <div class="top link-text">
+      <div class="top link-text" @click="clickTitle(topicDetail.topicId)">
         <span class="topic-title">{{topicDetail.title}}</span>
         <span>进入</span>
       </div>
