@@ -16,7 +16,7 @@ function showMsg() {
 <template>
   <div class="topic-head-simple card-border card-hover">
     <div class="back">
-      <el-image class="topic-cover" :src="topicDetail.cover" fit="cover">
+      <el-image class="topic-cover" :src="topicDetail?.cover" fit="cover">
         <template #error>
           <el-image :src="defaultCover" fit="cover"></el-image>
         </template>
@@ -25,13 +25,13 @@ function showMsg() {
     <div class="content-wrap">
       <div :class="['content-msg', {'show': show}]">
         <div class="left">
-          <div class="title">{{topicDetail.title}}</div>
+          <div class="title">{{topicDetail?.title || "无名"}}</div>
           <div class="msg">
             <span class="tip">帖子数</span>
-            <span>{{topicDetail.postNum}}</span>
+            <span>{{topicDetail?.postNum || 0}}</span>
           </div>
           <div class="desc">
-            {{topicDetail.desc}}
+            {{topicDetail?.desc || "暂无简介"}}
           </div>
         </div>
         <div class="right">

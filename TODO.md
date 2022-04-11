@@ -31,12 +31,23 @@
 - [x] 数据为空时展示
 
 #### 话题详情
+- [x] 路由配置
+- [x] 组件编写
+  - [x] TopicDetail
+  - [x] TopicHead
+  - [x] TopicHeadSimple
+  - [x] PostSort
+  - [x] CreateCardSimple
+- [x] 边写组件边响应式布局
+- [x] 数据为空展示
 
 #### 帖子详情
 
 #### 帖子搜索
 
 #### 用户页面
+
+### 整合
 
 ### 用户登录
 
