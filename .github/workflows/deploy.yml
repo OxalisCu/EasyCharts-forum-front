@@ -3,7 +3,7 @@ name: deploy vite project
 on:
   push:
     branches:
-      - dev
+      - master
 
 jobs:
   build:

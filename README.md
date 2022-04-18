@@ -1,4 +1,4 @@
-# Easycharts
+# EasyCharts-forum
 
 ### Prepare pnpm
 
